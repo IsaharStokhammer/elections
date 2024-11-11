@@ -14,3 +14,4 @@ router.route("/api/candidates").get(getCandidates);
 router.route("/api/users").get(getUsers);
 
 export default router;
+
