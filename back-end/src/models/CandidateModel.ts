@@ -20,4 +20,4 @@ const CandidateSchema = new Schema<ICandidate>({
     }
 })
 
-export default mongoose.model<ICandidate>("Candidate", CandidateSchema);
+export default mongoose.model<ICandidate>("CandidateModel", CandidateSchema);
