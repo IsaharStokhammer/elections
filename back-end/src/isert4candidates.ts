@@ -25,7 +25,7 @@ async function createCandidates(): Promise<void> {
       },
       {
         name: "Kamala Harris",
-        image: "https://bit.ly/48HCPCE",
+        image: "https://bit.ly/3YKOOun",
         votes: 0,
       },
       {
