@@ -2,7 +2,7 @@
 max-width: 300px;
 max-height: 400px;
 
-background-color: #fff;
+background-color: #e0f4f7;
 border-radius: 10px;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 display: flex;
@@ -10,11 +10,12 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 padding: 20px;
+margin: 20px;
 }
 
 .image{
-    max-width: 300px;
-    max-height: 300px;
+    width: 300px;
+    min-height: 200px;
 
     border: rgb(166, 3, 3) solid 1px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);

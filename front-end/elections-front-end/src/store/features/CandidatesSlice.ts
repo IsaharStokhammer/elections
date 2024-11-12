@@ -14,12 +14,12 @@ interface StudentStateType {
     error: null,
   };
 
-const BASE_URL = import.meta.env.BASE_URL;
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 export const featchCandidates = createAsyncThunk(
   "candidates/featchCandidates",
   async (): Promise<Candidate[] | undefined> => {
-    const response = await axios.get("http://localhost:3000/api/candidates");
+    const response = await axios.get(`${BASE_URL}/api/candidates`);
     return response.data;
   }
 );

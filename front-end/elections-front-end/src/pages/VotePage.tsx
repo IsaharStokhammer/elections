@@ -17,7 +17,7 @@ const VotePage: FC = () => {
 
   return (
     <>
-      <main className="page HomePage">
+      <main className="candidatesContainer">
         {status === "fulfilled" && !error ? (
           candidates.map((candidate) => (
             <div key={candidate.name}>

@@ -1,6 +1,4 @@
 import { Router } from "express";
-import mongoose from "mongoose";
-import CandidateModel from "../models/CandidateModel";
 import { createUser , getCandidates, getUsers, logIn} from "../controllers/userController";
 
 const router = Router();

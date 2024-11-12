@@ -14,6 +14,8 @@ const candidateCard: React.FC<CandidateCardProps> = ({name, image, votes}) => {
         <div>{name}</div>
         <img src={image} alt="image" className='image'/>
         <div>votes: {votes}</div>
+
+        <button>vote</button>
     </div>
   )
 }

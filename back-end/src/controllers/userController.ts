@@ -1,9 +1,6 @@
 import { Request, Response } from "express";
 import UserSchema, { IUser } from "../models/UserModel";
-import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
-import { Document } from "mongoose";
 import CandidateModel from "../models/CandidateModel";
 
 export const createUser = async (req: Request, res: Response) => {
@@ -11,9 +8,10 @@ export const createUser = async (req: Request, res: Response) => {
   const userNameExisted = await UserSchema.findOne({
     userName: newUserBasic.userName,
   });
-  if (userNameExisted)
-    res.status(400).json({ massage: "user name already existed" });
   try {
+    if (userNameExisted){
+      res.status(400).json({ massage: "user name already existed" });
+      return}
     const newUser = new UserSchema({
       userName: newUserBasic.userName,
       password: newUserBasic.password,
@@ -40,10 +38,10 @@ export const logIn = async (req: Request, res: Response) => {
       throw new Error();
     } else {
       const userId = userFound._id;
-      const newToken = jwt.sign({ userId }, process.env.SECRET_KEY as string, {
+      const newToken = jwt.sign({ userId ,isAdmin: userFound.isAdmin }, process.env.SECRET_KEY as string, {
         expiresIn: "1h",
       });
-      res.status(200).json({ token: newToken });
+      res.status(200).json({ token: newToken, user : userFound });
     }
   } catch (err) {
     res.status(400).json({ message: "user or password is incorrect" });
@@ -55,11 +53,9 @@ export const getUsers = async (req: Request, res: Response) => {
     const candidates = await UserSchema.find();
     res.status(200).json(candidates);
   } catch (err) {
-    res
-      .status(400)
-      .json({
-        massage: "something went wrong in -getCandidates-@userController",
-      });
+    res.status(400).json({
+      massage: "something went wrong in -getCandidates-@userController",
+    });
   }
 };
 
@@ -68,10 +64,8 @@ export const getCandidates = async (req: Request, res: Response) => {
     const candidates = await CandidateModel.find();
     res.status(200).json(candidates);
   } catch (err) {
-    res
-      .status(400)
-      .json({
-        massage: "something went wrong in -getCandidates-@userController",
-      });
+    res.status(400).json({
+      massage: "something went wrong in -getCandidates-@userController",
+    });
   }
 };
